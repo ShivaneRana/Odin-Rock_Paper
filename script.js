@@ -4,15 +4,15 @@ let rockPaperScissor = [null,"Rock","Paper","Scissor"];
 //this function gets computer input
 function getComputerChoice(){
     let uwu = Math.floor((Math.random()*3)+1);
-    console.log("Computer choice = "+uwu);
-    return uwu;
+    console.log("Computer choice = "+uwu+` (${rockPaperScissor[uwu]})`);
+    return +uwu;
 }
 
 //this function gets user input
 function getUserChoice(){
     let userChoice = prompt("Choose one of the following~\n1.Rock\n2.Paper\n3.Scissor");
-    console.log("User Choose = "+userChoice);
-    return userChoice;
+    console.log("User Choose = "+userChoice+`  (${rockPaperScissor[userChoice]})`);
+    return +userChoice;
 }
 
 //this function basically is responsible for running of the game 5 times and storing each win in a variable of which at last it check who won tha game
@@ -27,6 +27,22 @@ function playGame(){
         function playRound(humanChoice,computerChoice){
             let human = humanChoice();
             let comp = computerChoice();
+
+            
+
+            function displayComputerChoice(comp){
+                if(comp === 1){
+                    alert("Computer choose Rock!");
+                }else if(comp === 2){
+                    alert("computer choose Paper!");
+                }else if(comp === 3){
+                    alert("Computer choose Scissor!");
+                }
+            }
+            
+            
+            displayComputerChoice(comp);
+
             //1 = rock,2 = paper,3 = scissor.
             if(comp === human){
                 console.log("Draw!No points were added to neither of contestent"+`\nUser Score = ${playerScore}\nComputer Score = ${computerScore}`);
@@ -37,12 +53,12 @@ function playGame(){
                 alert("User Win! Paper beats Rock."+`\nUser Score = ${playerScore}\nComputer Score = ${computerScore}`);
             }else if(comp === 2 && human === 3){
                 playerScore++;
-                console.log("User Win! Paper beats Scissor");
-                alert("User Win! Paper beats Scissor"+`\nUser Score = ${playerScore}\nComputer Score = ${computerScore}`);
+                console.log("User Win! Scissor beats Paper");
+                alert("User Win! SCissor beats Paper"+`\nUser Score = ${playerScore}\nComputer Score = ${computerScore}`);
             }else if(comp === 3 && human === 1){
                 playerScore++;
                 console.log("User Win! Rock beats Scissor");
-                alert("User Win! Scissor beats Paper"+`\nUser Score = ${playerScore}\nComputer Score = ${computerScore}`);    
+                alert("User Win! Rock beats Scissor"+`\nUser Score = ${playerScore}\nComputer Score = ${computerScore}`);    
             }else if(human === null || human === undefined || human === ""){
                 computerScore++;
                 console.log("Computer Wins! Since the User input is unclear");
