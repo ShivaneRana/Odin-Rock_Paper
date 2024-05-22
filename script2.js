@@ -42,4 +42,12 @@ function gameStart1(){
     })
 })};
 
-gameStart1();
+//this function get computer input
+function getComputerChoice(){
+    let computerChoice = Math.floor((Math.random()*3)+1);
+    textArea.textContent = `Computer choose ${rockpaperscissor[computerChoice]}`;
+    console.log(`Computer choose ${rockpaperscissor[computerChoice]}`);
+    return computerChoice;
+}
+
+getComputerChoice()
