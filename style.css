@@ -24,24 +24,35 @@ body{
     display: flex;
 }
 
-#scoreArea #computerScoreArea{
+#computerScoreArea,#userScoreArea{
     height: 100%;
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#scoreArea #computerScoreArea{
     background-color: chocolate;
 }
 
 #scoreArea #userScoreArea{
-    height: 100%;
-    width: 50%;
     background-color: green;
 }
 
 #textArea{
     height: 80%;
     background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 #buttonArea{
     height: 20%;
     background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
