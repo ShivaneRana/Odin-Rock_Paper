@@ -15,12 +15,12 @@ body{
 #main{
     height: 60%;
     width: 50%;
-    background-color: black;
+    background-color: white;
+    border: 2px black dashed;
 }
 
 #scoreArea{
     height: 20%;
-    background-color: rebeccapurple;
     display: flex;
 }
 
@@ -33,36 +33,41 @@ body{
 }
 
 #scoreArea #computerScoreArea{
-    background-color: chocolate;
+    color: black;
 }
 
 #scoreArea #userScoreArea{
-    background-color: green;
+    color: black;
 }
 
 #buttonArea{
     height: 20%;
-    background-color: red;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px black dashed;
+    gap: 5em;
 }
 
 #textArea{
     height: 80%;
-    background-color: aquamarine;
     display: flex;
     align-items: center;
     text-align: center;
     flex-direction: column;
+    gap: 5em;
 }
 
 #roundNumber{
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
     height: 2em;
-    background-color: yellow;
 }
 
 #roundInfo{
-    margin-top: 7em;
-    background-color: rebeccapurple;
+    color: black;
 }

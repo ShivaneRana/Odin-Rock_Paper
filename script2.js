@@ -20,10 +20,22 @@ const computerScoreArea = document.querySelector("#computerScoreArea");
 const userScoreArea = document.querySelector("#userScoreArea");
 const scoreArea = document.querySelector("#scoreArea");
 
+//properties for button
+startGameButton.style.border = "none"
+startGameButton.style.padding = "1.5em"
+roundNumber.style.textDecoration = "underline";
+
 //stone paper scissor button functionality
 stone.textContent = "Stone";
 paper.textContent = "Paper";
 scissor.textContent = "Scissor";
+scissor.style.border = "none";
+paper.style.border = "none";
+stone.style.border = "none";
+stone.style.padding = "1.5em";
+paper.style.padding = "1.5em";
+scissor.style.padding = "1.5em";
+
 
 //stone paper and scissor button addListner Event
 stone.addEventListener("click",() => playRound(1));
@@ -54,12 +66,14 @@ scissor.addEventListener("click",() => playRound(3));
 function gameStart1(){
     startGameButton.addEventListener("click",() => {
         if(startGameButton.textContent === "Start Game"){
-            textArea.textContent = "uwu1";
+            userScoreArea.style.border = "2px black dashed";
+            computerScoreArea.style.border = "2px black dashed";
+            textArea.textContent = "A game of rock-paper-scissors with multiple rounds until someone wins a total of five times.";
             startGameButton.textContent = "Continue";
             userScoreArea.textContent = "User score is displayer here";
             computerScoreArea.textContent = "Computer score is displayed here";
         }else if(startGameButton.textContent === "Continue"){
-            textArea.textContent = "uwu2";
+            textArea.textContent = "Are you ready to play?";
             startGameButton.textContent = "Enter the game";
             userScoreArea.textContent = `User score : ${userScore}`;
             computerScoreArea.textContent = `Computer score : ${computerScore}`;
@@ -79,7 +93,7 @@ function getComputerChoice(){
 //function to get user Input
 function getUserChoice(){
     startGameButton.remove();
-    textArea.textContent = "Choose of the following";
+    textArea.textContent = "Please choose";
     buttonArea.append(stone);
     buttonArea.append(paper)
     buttonArea.append(scissor);
@@ -93,15 +107,21 @@ function getUserChoice(){
 function playRound(num){
     if(flag){
 
+        roundNumber.remove();
+        textArea.style.marginTop = "7em";
         //exit button
         const exit = document.createElement("button");
         exit.textContent = "Exit";
+        exit.style.border = "none";
+        exit.style.padding = "1.5em";
         buttonArea.append(exit);
         exit.addEventListener("click",() => {
             textArea.remove();
             buttonArea.remove();
             scoreArea.remove();
-            main.style.color = "white";
+            main.style.color = "black";
+            main.style.textAlign = "center";
+            main.style.textDecoration = "underline";
             main.textContent = "Reload Webpage to replay the game";
         });
         textArea.textContent = "bye bye!";
@@ -117,22 +137,30 @@ function playRound(num){
     let computerChoice = getComputerChoice();
     console.log("Computer choose = "+computerChoice);    
     if(computerChoice === num){
-        textArea.textContent = "The game was a draw";
+        textArea.textContent = `Computer choose ${rockpaperscissor[computerChoice]} too so, `+"The game was a draw";
         console.log("the game was a draw");
     }else if((num === 1 && computerChoice === 3) || (num === 2 && computerChoice === 1) || (num === 3 && computerChoice === 2)){
         ++userScore
-        textArea.textContent = "Player won this round";
+        textArea.textContent = `Computer choose ${rockpaperscissor[computerChoice]} hence, `+"Player won this round";
         console.log("the player won this round");
     }else{
         ++computerScore
         console.log("Computer won this round");
-        textArea.textContent = "Computer won this round";
+        textArea.textContent =  `Computer choose ${rockpaperscissor[computerChoice]} hence, `+"Computer won this round";
     }
 
     roundNumber.textContent = "Current round: "+currentRoundNumber++;
     updateScore();
 
-    if(userScore === 5 || computerScore === 5){
+    if(currentRoundNumber === 6){
+        stone.remove();
+        paper.textContent = "Continue";
+        scissor.remove();
+    }
+
+    if(currentRoundNumber > 6){
+        stone.remove();
+        scissor.remove();
         displayFinalResult();
         flag = true;
     }
@@ -142,12 +170,19 @@ function playRound(num){
 //function to update score every round
 function updateScore(){
     computerScoreArea.textContent = `Computer score ${computerScore}`;
-    userScoreArea.textContent = `Computer score ${userScore}`;
+    userScoreArea.textContent = `Player score ${userScore}`;
 }
 
 
 //this function compare score between user and the computer
 function displayFinalResult(){
+    roundNumber.style.backgroundColor = "black";
+    roundNumber.style.color = "white";
+    roundNumber.textContent = "Game Over";
+    roundNumber.style.padding = "1.5em";
+    textArea.style.backgroundColor = "black";
+    textArea.style.color = "white";
+    textArea.style.padding = "1.5em";
     if(userScore === computerScore){
         textArea.textContent = "The game was a draw";
     }else if(userScore > computerScore){
@@ -157,6 +192,7 @@ function displayFinalResult(){
     }else{
         textArea.textContent = "The game broke";
     }
+    
 }
 
 gameStart1();
