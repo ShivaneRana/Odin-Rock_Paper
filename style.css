@@ -40,16 +40,6 @@ body{
     background-color: green;
 }
 
-#textArea{
-    height: 80%;
-    background-color: aquamarine;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-}
-
 #buttonArea{
     height: 20%;
     background-color: red;
@@ -58,8 +48,21 @@ body{
     align-items: center;
 }
 
+#textArea{
+    height: 80%;
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
 #roundNumber{
-    height: 20%;
+    height: 2em;
     background-color: yellow;
-    margin-bottom: 40%;
+}
+
+#roundInfo{
+    margin-top: 7em;
+    background-color: rebeccapurple;
 }
