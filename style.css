@@ -47,6 +47,7 @@ body{
     justify-content: center;
     align-items: center;
     text-align: center;
+    flex-direction: column;
 }
 
 #buttonArea{
@@ -55,4 +56,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#roundNumber{
+    height: 20%;
+    background-color: yellow;
+    margin-bottom: 40%;
 }
