@@ -5,8 +5,10 @@ const rockpaperscissor = [null,"stone","Paper","Scissor"];
 let userScore = 0;
 let computerScore = 0;
 let flag = false;
+let currentRoundNumber = 1; 
 
 //creating new variables
+const main = document.querySelector("#main");
 let stone = document.createElement("button");
 let paper = document.createElement("button");
 let scissor = document.createElement("button");
@@ -16,7 +18,7 @@ const startGameButton = document.querySelector("#startGameButton");
 const roundNumber = document.querySelector("#roundNumber");
 const computerScoreArea = document.querySelector("#computerScoreArea");
 const userScoreArea = document.querySelector("#userScoreArea");
-
+const scoreArea = document.querySelector("#scoreArea");
 
 //stone paper scissor button functionality
 stone.textContent = "Stone";
@@ -63,7 +65,7 @@ function gameStart1(){
             computerScoreArea.textContent = `Computer score : ${computerScore}`;
         }else if(startGameButton.textContent === "Enter the game"){
             getUserChoice();
-        }   
+        }
     });
 }
 
@@ -90,8 +92,27 @@ function getUserChoice(){
 //1 = stone,2 = paper,3 = scissor 
 function playRound(num){
     if(flag){
+
+        //exit button
+        const exit = document.createElement("button");
+        exit.textContent = "Exit";
+        buttonArea.append(exit);
+        exit.addEventListener("click",() => {
+            textArea.remove();
+            buttonArea.remove();
+            scoreArea.remove();
+            main.style.color = "white";
+            main.textContent = "Reload Webpage to replay the game";
+        });
+        textArea.textContent = "bye bye!";
+
+        //clean button area
+        stone.remove();
+        scissor.remove();
+        paper.remove();
         return;
     }
+
     console.log("User choose = "+num);
     let computerChoice = getComputerChoice();
     console.log("Computer choose = "+computerChoice);    
@@ -108,6 +129,7 @@ function playRound(num){
         textArea.textContent = "Computer won this round";
     }
 
+    roundNumber.textContent = "Current round: "+currentRoundNumber++;
     updateScore();
 
     if(userScore === 5 || computerScore === 5){
@@ -137,9 +159,4 @@ function displayFinalResult(){
     }
 }
 
-//Ending game message
-function meassageAtGameEnd(){
-}
-
-
-gameStart1()
+gameStart1();
