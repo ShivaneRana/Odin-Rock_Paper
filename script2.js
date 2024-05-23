@@ -64,6 +64,7 @@ scissor.addEventListener("click",() => playRound(3));
 
 //gamestart1 function rewritten code
 function gameStart1(){
+    textArea.style.fontSize = "2em"
     startGameButton.addEventListener("click",() => {
         if(startGameButton.textContent === "Start Game"){
             userScoreArea.style.border = "2px black dashed";
@@ -180,6 +181,7 @@ function displayFinalResult(){
     roundNumber.style.color = "white";
     roundNumber.textContent = "Game Over";
     roundNumber.style.padding = "1.5em";
+    textArea.style.fontSize = "1em"
     textArea.style.backgroundColor = "black";
     textArea.style.color = "white";
     textArea.style.padding = "1.5em";
